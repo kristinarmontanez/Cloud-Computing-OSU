@@ -1,0 +1,79 @@
+/* _____________________________________________________________________________
+ Name:             Kristina Montanez
+ Date:             6/1/2022
+ Class:            CS 493
+ Project:          Portfolio Assignment
+ File:             main.py
+ Description:      Building and implementing an API with OAuth, deployed on
+                   Google App Engine. The web application will issue the
+                   relevant requests and processes responses so that the app
+                   can access protected resources on a user's Google account.
+                   Portfolio assignment building on prior assignment features.
+_____________________________________________________________________________ */
+
+body {
+    background-color: rgb(7, 58, 84);
+    background-image: linear-gradient(to right, #538a9d, rgb(8, 57, 79));
+    background-size: cover;
+    font-family: "Sofia";
+    }
+
+.Container-Header {
+    text-align:center; 
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    background-color: #064169;
+    color:aliceblue;
+    padding: 12px 20px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-image: linear-gradient(-180deg, #064069 0%, #063c69 100%);
+    /*DISCLAIMER: For CS 290, I researched how to use the various insets to create a "3d button affect"
+    where each row provides the gradient effect on either the top, bottom, or middle parts 
+    of the button. I have implemented this "3d button effect" for my CS 493 header and button, as the
+    CSS portion of this assignment is not part of the grade and only for added looks.*/
+    box-shadow: 0 1rem 1.25rem 0 rgba(42, 105, 124, 0.5),
+                0 -0.25rem 1.5rem rgb(3, 12, 14) inset,
+                0 0.75rem 0.5rem rgb(93, 150, 167) inset,
+                0 0.25rem rgb(6, 29, 40) inset;
+    }
+
+.Container-Body {
+    overflow-wrap: break-word;
+    text-align:center;
+    color:aliceblue;
+    font-family: "Sofia";
+    }
+
+.Container-Text {
+    overflow-wrap: break-word;
+    text-align:center; 
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    color:aliceblue;
+    font-family: "Sofia";
+    }
+
+.Container-Button {
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto; 
+    font-family: "Sofia";
+    background-color: #064a69;
+    color:aliceblue;
+    padding: 12px 20px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-image: linear-gradient(-180deg, #064869 0%, #064069 100%);
+    /*DISCLAIMER: For CS 290, I researched how to use the various insets to create a "3d button affect"
+    where each row provides the gradient effect on either the top, bottom, or middle parts 
+    of the button. I have implemented this "3d button effect" for my CS 493 header and button, as the
+    CSS portion of this assignment is not part of the grade and only for added looks.*/
+    box-shadow: 0 1rem 1.25rem 0 rgba(42, 105, 124, 0.5),
+                0 -0.25rem 1.5rem rgb(3, 12, 14) inset,
+                0 0.75rem 0.5rem rgb(93, 150, 167) inset,
+                0 0.25rem rgb(6, 29, 40) inset;
+    }
+

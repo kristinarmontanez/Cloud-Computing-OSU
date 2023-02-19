@@ -1,0 +1,5371 @@
+{
+	"info": {
+		"_postman_id": "361066c4-6073-42e0-ad33-be92361c20d1",
+		"name": "Portfolio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14743509"
+	},
+	"item": [
+		{
+			"name": "RESET BOOKS & REVIEWS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"204 no content\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/reset/booksreviews",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reset",
+						"booksreviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/users",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 1 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"book_id1_user_1\", pm.response.json()[\"id\"]);",
+							"",
+							"pm.environment.set(\"user_id1\", pm.response.json()[\"owner_ids\"]);",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Dune\",  \r\n    \"author\": \"Frank Herbert\", \r\n    \"genre\": \"sci-fi\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 1 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"review_id1_user_1\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"6/10/2022\",  \r\n    \"rating\": 4, \r\n    \"comment\": \"Out in the dusty middle of nowhere, political posturing, everything is extremely boring until the main dude rides a giant sand worm.\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 2 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"book_id2_user_1\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Pride and Prejudice\",  \r\n    \"author\": \"Jane Austen\", \r\n    \"genre\": \"romance\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"review_id2_user_1\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"3/11/2005\",  \r\n    \"rating\": 5, \r\n    \"comment\": \"Iconic'enemies to lovers' trope where an entitled @$$hat is repeatedly offended by a stick-in-the-mud. Sorry if i broke hearts with that one.\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 3 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"book_id3_user_1\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Fifty Shades of Grey\",\r\n    \"author\": \"E.L. James\", \r\n    \"genre\": \"romance\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 3 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"review_id3_user_1\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"1/05/2011\",  \r\n    \"rating\": 1, \r\n    \"comment\": \"Don''t judge, I had a really boring job after law school and needed audio that would keep me awake..\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 4 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"book_id4_user_1\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"A Dance with Dragons\",\r\n    \"author\": \"George R.R. Martin\", \r\n    \"genre\": \"fantasy\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 4 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"review_id4_user_1\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"2/25/2013\",  \r\n    \"rating\": 5, \r\n    \"comment\": \"Dragons, incest, everyone dies, and the audiobook narrated by Roy Detrice. What more can you ask for\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 5 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"book_id5_user_1\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Stranger in a Strange Land\",\r\n    \"author\": \"Robert A. Heinlein\", \r\n    \"genre\": \"sci-fi\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 5 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"review_id5_user_1\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"7/4/2000\",  \r\n    \"rating\": 2, \r\n    \"comment\": \"Young, wealthy extraterrestrial immigrant starts a sex cult and is eventually killed by a mob.\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 6 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"book_id6_user_1\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Good Omens\",\r\n    \"author\": \"Neil Gaiman & Terry Pratchett\", \r\n    \"genre\": \"fantasy\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 6 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"review_id6_user_1\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"2/25/2019\",  \r\n    \"rating\": 5, \r\n    \"comment\": \"Bro-mance 'enemies to lovers' are tasked with babysitting a kid so the world doesn't end. I will forever ship David Tennant and Michael Sheen.\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 1 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"book_id1_user_2\", pm.response.json()[\"id\"]);",
+							"",
+							"pm.environment.set(\"user_id2\", pm.response.json()[\"owner_ids\"]);",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Ready Player One\",  \r\n    \"author\": \"Ernest Cline\", \r\n    \"genre\": \"fantasy\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 1 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"review_id1_user_2\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"8/16/2011\",  \r\n    \"rating\": 4, \r\n    \"comment\": \"Nerd Utopia for those of us elder Millennials that are stuck in the 80s and 90s. Dystopian novel about what happens if everyone buys their kids Oculus VR headsets.\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 2 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"book_id2_user_2\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Harry Potter and the Half Blood Prince\",  \r\n    \"author\": \"J.K. Rowling\", \r\n    \"genre\": \"fantasy\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"review_id2_user_2\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"8/16/2005\",  \r\n    \"rating\": 5, \r\n    \"comment\": \"Wizard Highschool drama, horcruxes, and a deeper look into who Severus Snape is.\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 3 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"book_id3_user_2\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"World War Z\",  \r\n    \"author\": \"Max Brooks\", \r\n    \"genre\": \"post-apocalyptic\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 3 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"review_id3_user_2\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"8/16/2005\",  \r\n    \"rating\": 5, \r\n    \"comment\": \"An overly optimistic portrayal of how humans would react to a deadly pandemic. Don't forget to read his zombie survival guide.\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 4 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"book_id4_user_2\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"The Name of the Wind\",  \r\n    \"author\": \"Patrick Rothfuss\", \r\n    \"genre\": \"fantasy\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 4 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"review_id4_user_2\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"9/3/2007\",  \r\n    \"rating\": 3, \r\n    \"comment\": \"Old man with a self-importance the size of my TBR list reminiscing on his college years. Well written but rather annoying main character. Harry Potter for adults.\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 5 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"book_id5_user_2\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Myst #1: The Book of Atrus\",  \r\n    \"author\": \"Rand Miller\", \r\n    \"genre\": \"sci-fi\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 5 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"review_id5_user_2\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"6/1/2000\",  \r\n    \"rating\": 5, \r\n    \"comment\": \"What would you do if you had the ability to create an entire world with the stroke of a pen? Extra nerd points for anyone who's ever played the video game.\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 6 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"book_id6_user_2\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Six of Crows\",  \r\n    \"author\": \"Leigh Bardugo\", \r\n    \"genre\": \"fantasy\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 6 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"review_id6_user_2\", pm.response.json()[\"id\"]);",
+							"",
+							"",
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"11/2/2016\",  \r\n    \"rating\": 5, \r\n    \"comment\": \"You want a daring heist? But make it Game of Thrones style? With a grimy cut-throat atmosphere in a shanty port town? Look no further! Don't forget to read the sequel.\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Book 7 User 1 INVALID JWT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//This horrible book better not get posted.",
+							"//Should say that the JWT is missing. ",
+							"pm.test(\"401 status code\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{invalid_jwt}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Twilight\",  \r\n    \"author\": \"Stephenie Meyer\", \r\n    \"genre\": \"YA\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Book 7 User 1 INVALID DATA",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//This horrible book better not get posted.",
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Twilight\",  \r\n    \"villain\": \"Stephenie Meyer\", \r\n    \"only for\": \"YA\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Book 7 User 1 MISSING JWT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//This horrible book better not get posted.",
+							"//Should say that the JWT is missing. ",
+							"pm.test(\"401 status code\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Twilight\",  \r\n    \"author\": \"Stephenie Meyer\", \r\n    \"genre\": \"YA\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Book 7 User 1 MISSING ACCEPT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//This horrible book better not get posted.",
+							"pm.test(\"406 status code\", function () {",
+							"    pm.response.to.have.status(406);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "text/html",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Twilight\",  \r\n    \"author\": \"Stephenie Meyer\", \r\n    \"genre\": \"YA\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Book 7 User 1 INVALID ACCEPT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//This horrible book better not get posted.",
+							"pm.test(\"406 status code\", function () {",
+							"    pm.response.to.have.status(406);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "text/html",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Twilight\",  \r\n    \"author\": \"Stephenie Meyer\", \r\n    \"genre\": \"YA\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Book 2 User 1 USER 2 REQUESTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Review 2 User 2 USER 1 REQUESTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Book 2 User 1 USER 2 REQUESTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Pride and Prejudice 2\",  \n    \"author\": \"Jane Austen\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Review 2 User 2 USER 1 REQUESTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"8/16/2005\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Book 2 User 1 USER 2 REQUESTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Pride and Prejudice Edited\",  \n    \"id\": 123,\n    \"genre\": \"romance\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Review 2 User 2 USER 1 REQUESTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"comment\": \"I know we've all heard this before. Die Hard isn't a Christmas movie. John McClane sneaks around a tower at night avoiding Alan Rickman. It's a Harry Potter movie.\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Review 1 Book 1 User 1 USER 2 REQUESTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id1_user_1}}/reviews/{{review_id1_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id1_user_1}}",
+						"reviews",
+						"{{review_id1_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Review 1 Book 1 User 2 USER 1 REQUESTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id1_user_2}}/reviews/{{review_id1_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id1_user_2}}",
+						"reviews",
+						"{{review_id1_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Review 2 Book 2 User 1 USER 2 REQUESTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_1}}/reviews/{{review_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_1}}",
+						"reviews",
+						"{{review_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Review 2 Book 2 User 2 USER 1 REQUESTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_2}}/reviews/{{review_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_2}}",
+						"reviews",
+						"{{review_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Book 1 User 1 USER 2 REQUESTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id1_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id1_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR Review 3 User 2 USER 1 REQUESTING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id3_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id3_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Books User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Books User 1 next page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books?limit=5&offset=5",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "offset",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Reviews User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Reviews User 1 next page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews?limit=5&offset=5",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "offset",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Books User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Books User 2 next page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books?limit=5&offset=5",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "offset",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Reviews User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Reviews User 2 next page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews?limit=5&offset=5",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "offset",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 2 User 1 BEFORE PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 2 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Pride and Prejudice 2\",  \n    \"author\": \"Jane Austen\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 2 User 2 BEFORE PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 2 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Harry Potter and the Half Blood Prince\",  \n    \"genre\": \"YA\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 User 1 BEFORE PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"comment\": \"Iconic'enemies to lovers' trope where an entitled @$$hat is repeatedly offended by a stick-in-the-mud. Sorry if i broke hearts with that one.\",  \n    \"owner_id\": 235,\n    \"id\": 123\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 User 2 BEFORE PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"8/16/2005\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 2 User 1 BEFORE PATCH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 2 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Pride and Prejudice Edited\",  \n    \"id\": 123,\n    \"genre\": \"romance\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 User 1 BEFORE PATCH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n    \"rating\": 5, \n    \"comment\": \"Nevermind I really liked this book.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 2 User 2 BEFORE PATCH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 2 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n    \"genre\": \"YA\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 User 2 BEFORE PATCH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"comment\": \"I know we've all heard this before. Die Hard isn't a Christmas movie. John McClane sneaks around a tower at night avoiding Alan Rickman. It's a Harry Potter movie.\"\r\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 1 User 1 BEFORE RELATION",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id1_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id1_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 1 User 1 BEFORE RELATION",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id1_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id1_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 1 Book 1 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id1_user_1}}/reviews/{{review_id1_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id1_user_1}}",
+						"reviews",
+						"{{review_id1_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 Book 2 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_1}}/reviews/{{review_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_1}}",
+						"reviews",
+						"{{review_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 3 Book 3 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id3_user_1}}/reviews/{{review_id3_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id3_user_1}}",
+						"reviews",
+						"{{review_id3_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 4 Book 4 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id4_user_1}}/reviews/{{review_id4_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id4_user_1}}",
+						"reviews",
+						"{{review_id4_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 1 User 2 BEFORE RELATION",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id1_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id1_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 1 User 2 BEFORE RELATION",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id1_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id1_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 1 Book 1 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id1_user_2}}/reviews/{{review_id1_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id1_user_2}}",
+						"reviews",
+						"{{review_id1_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 Book 2 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_2}}/reviews/{{review_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_2}}",
+						"reviews",
+						"{{review_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 3 Book 3 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id3_user_2}}/reviews/{{review_id3_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id3_user_2}}",
+						"reviews",
+						"{{review_id3_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 4 Book 4 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id4_user_2}}/reviews/{{review_id4_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id4_user_2}}",
+						"reviews",
+						"{{review_id4_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 User 1 BEFORE RELATION DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 2 User 1 BEFORE RELATION DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 Book 2 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"204 status code\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_1}}/reviews/{{review_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_1}}",
+						"reviews",
+						"{{review_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 User 1 AFTER RELATION DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 2 User 1 AFTER RELATION DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 User 2 BEFORE RELATION DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 2 User 2 BEFORE RELATION DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 Book 2 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"204 status code\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_2}}/reviews/{{review_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_2}}",
+						"reviews",
+						"{{review_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 2 User 2 AFTER RELATION DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 2 User 2 AFTER RELATION DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id2_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id2_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 1 User 1 BEFORE DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id1_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id1_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 1 User 1 BEFORE BOOK DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id1_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id1_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 1 User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"204 status code\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id1_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id1_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 1 User 1 AFTER DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id1_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id1_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 1 User 1 AFTER BOOK DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id1_user_1}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id1_user_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 3 User 2 BEFORE DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id3_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id3_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 3 User 2 BEFORE REVIEW DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id3_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id3_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 3 User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"204 status code\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id3_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id3_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review 3 User 2 AFTER DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/reviews/{{review_id3_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"reviews",
+						"{{review_id3_user_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book 3 User 2 AFTER REVIEW DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{jwt2}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/books/{{book_id3_user_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"books",
+						"{{book_id3_user_2}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

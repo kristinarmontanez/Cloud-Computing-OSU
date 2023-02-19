@@ -1,0 +1,38 @@
+<!-- _____________________________________________________________________________
+ Name:             Kristina Montanez
+ Date:             6/1/2022
+ Class:            CS 493
+ Project:          Portfolio Assignment
+ File:             main.py
+ Description:      Building and implementing an API with OAuth, deployed on
+                   Google App Engine. The web application will issue the
+                   relevant requests and processes responses so that the app
+                   can access protected resources on a user's Google account.
+                   Portfolio assignment building on prior assignment features.
+_____________________________________________________________________________ -->
+<!DOCTYPE html>
+            <html>
+            <head>
+            <title>Welcome</title>
+            <link rel="stylesheet" type="text/css" href="/static/style.css">
+            </head>
+
+
+
+<body>
+    <div class="Container">
+        <h1 class="Container-Header">Welcome!</h1>
+            <div class="Container-Body">
+                <p class="Container-Text">This page allows you to test my CS493 Portfolio Project. 
+                                    The "Authorize and Create Account" button below will redirect you to 
+                                    Google's OAuth sign-in page asking for authorization to access
+                                    your profile information. Only your first and last name will
+                                    be used in this application. Once you authorize the appplication to 
+                                    access your name, your own personal account will be created and you 
+                                    may access the account using a Token provided after successful login.</p>
+                <h5 class="">Hit the button below!</h5>
+                <a href="{{ url_for('get_state') }}" class="Container-Button">Authorize and Create Account </a>
+            </div>
+    </div>
+</body>
+</html>

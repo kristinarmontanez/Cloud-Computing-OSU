@@ -1,0 +1,46 @@
+<!-- _____________________________________________________________________________
+ Name:             Kristina Montanez
+ Date:             6/1/2022
+ Class:            CS 493
+ Project:          Portfolio Assignment
+ File:             main.py
+ Description:      Building and implementing an API with OAuth, deployed on
+                   Google App Engine. The web application will issue the
+                   relevant requests and processes responses so that the app
+                   can access protected resources on a user's Google account.
+                   Portfolio assignment building on prior assignment features.
+_____________________________________________________________________________ -->
+<!DOCTYPE html>
+                <html>
+                <head>
+                <title>User Info</title>
+                <link rel="stylesheet" type="text/css" href="/static/style.css">
+                </head>
+
+<body>
+    <div class="Container">
+    <h1 class="Container-Header">User Info</h1>
+        <div class="Container-Body">
+            <div class="Container-Body">
+                <p class="Container-Text">  Your own personal account is created and you 
+                                            may now access the account using a Token provided below. 
+                                            Keep your Unique I.D., this is the I.D. associated with your JWTs
+                                            and will associate you to your account. Please use the Welcome Page
+                                            to refresh your JWT.</p>
+            <br>
+            <br>
+            <h5 class="Container-Text">{% if hello_user_names %} {{hello_user_names}} {% endif %}</h5>
+            <br>
+            <br>
+            <h5 class="Container-Text">{% if unique_id %} {{unique_id}} {% endif %}</h5>
+            <br>
+            <br>
+            <h5 class="Container-Text">{% if id_token %} {{id_token}} {% endif %}</h5>
+            <h5 class="Container-Text">{% if user_error %} {{user_error}} {% endif %}</h5>
+            <h5 class="Container-Text">{% if user_status %} {{user_status}} {% endif %}</h5>
+            <h5 class="Container-Text">{% if error_explanation %} {{error_explanation}} {% endif %}</h5>
+            <a href="{{ url_for('index') }}" class="Container-Button">Home</a>
+        </div>
+    </div>
+</body>
+</html>
